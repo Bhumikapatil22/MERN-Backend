@@ -1,13 +1,15 @@
 const mongoose=require("mongoose");
 
+//route handler
 const likeSchema=new mongoose.Schema({
-    noOfLikes:{
-        type:Number,
-        required:true
+    post:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Post", //reference to the post model
     },
-    noOfUnlikes:{
-        type:Number,
-        required:true
+    user:{
+        type:String,
+        required:true,
     }
-})
-module.exports=mongoose.model("Likes",likeSchema);
+});
+
+module.exports=mongoose.model("Like",likeSchema);
